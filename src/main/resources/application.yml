@@ -4,9 +4,9 @@ server:
     context-path: /api
 
 spring:
-  output:
-    ansi:
-      enabled: always
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
   application:
     name: weather-forecast-service
   datasource:
