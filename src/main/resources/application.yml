@@ -1,0 +1,42 @@
+server:
+  port: 8082
+  servlet:
+    context-path: /api
+
+spring:
+  output:
+    ansi:
+      enabled: always
+  application:
+    name: weather-forecast-service
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    jdbcUrl: jdbc:mysql://192.168.56.101:3306/DB_LOCAL?createDatabaseIfNotExist=true&useSSL=false
+    username: server
+    password: admin123
+    hikari:
+      connection-timeout: 60000
+      maximum-pool-size: 5
+      connection-test-query: select 1;
+  jpa:
+    generate-ddl: true
+    show-sql: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate.dialect: org.hibernate.dialect.MySQL57Dialect
+      hibernate.format_sql: false
+
+
+# REST API OpenWeather.
+current:
+   weather:
+      data:
+        baseUrl: https://api.openweathermap.org/data/2.5
+      filter:
+        name: /weather?
+
+# Secret key auth - REST API authentication.
+secret:
+   api:
+    key: aee912740b2ec1780ebbfd2e13cd0ed2
