@@ -12,6 +12,7 @@ import com.weather.forecast.model.Sys;
 import com.weather.forecast.model.Weather;
 import com.weather.forecast.model.Wind;
 import com.weather.forecast.repository.WeatherInformationRepository;
+import feign.FeignException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,16 +32,22 @@ public class WeatherInformationService {
     @Autowired
     private WeatherInformationRepository weatherInfoRepository;
 
+    private ForecastWeather forecastWeather = new ForecastWeather();
+
     @Transactional
     public ForecastWeather getCurrentWeatherForecastByCityName(String cityName) {
-        JsonForecast jsonForecast = weatherInfoApiClient.getCurrentWeatherForecastByCityName(cityName);
-        ForecastWeather forecastWeather = saveForecastWeather(jsonForecast);
+        try {
+            JsonForecast jsonForecast = weatherInfoApiClient.getCurrentWeatherForecastByCityName(cityName);
+            forecastWeather = saveForecastWeather(jsonForecast);
+        } catch (FeignException ex) {
+            forecastWeather = getTheLastConsultedWeatherForecast(ex.status());
+        }
         return forecastWeather;
     }
 
     @Transactional
     private ForecastWeather saveForecastWeather(JsonForecast jsonForecast) {
-        ForecastWeather forecastWeather = new ForecastWeather();
+        forecastWeather = new ForecastWeather();
         forecastWeather.setCityId(jsonForecast.getCityId());
         forecastWeather.setCityName(jsonForecast.getCityName());
         forecastWeather.setTimeZone(jsonForecast.getTimeZone());
@@ -112,5 +119,14 @@ public class WeatherInformationService {
 
         final ForecastWeather result = weatherInfoRepository.save(forecastWeather);
         return result;
+    }
+
+    @Transactional
+    private ForecastWeather getTheLastConsultedWeatherForecast(int statusCode) {
+        if (statusCode == 500 || statusCode == 502 || statusCode == 503 || statusCode == 504) {
+            forecastWeather = weatherInfoRepository.findFirstByOrderByRegisterDateDesc();
+            forecastWeather.setStatusCode(statusCode);
+        }
+        return forecastWeather;
     }
 }

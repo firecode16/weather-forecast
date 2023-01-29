@@ -12,8 +12,8 @@ public class FeignClientConfig {
     @Bean
     public RequestInterceptor requestInterceptor() {
         return requestTemplate -> {
-            requestTemplate.header("Content-Type", "application/json");
             requestTemplate.header("Accept", "application/json");
+            requestTemplate.header("Content-Type", "application/json");
         };
     }
 }

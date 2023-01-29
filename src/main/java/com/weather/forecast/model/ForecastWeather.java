@@ -1,5 +1,6 @@
 package com.weather.forecast.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Column;
@@ -8,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import org.hibernate.annotations.Type;
 
 /**
@@ -62,6 +64,10 @@ public class ForecastWeather extends BaseEntity implements Serializable {
     @Type(type = "json")
     @Column(name = "sys", columnDefinition = "json")
     private Sys sys;
+
+    @Transient
+    @JsonIgnore
+    private int statusCode;
 
     public Long getCityId() {
         return cityId;
@@ -165,6 +171,14 @@ public class ForecastWeather extends BaseEntity implements Serializable {
 
     public void setSys(Sys sys) {
         this.sys = sys;
+    }
+
+    public int getStatusCode() {
+        return statusCode;
+    }
+
+    public void setStatusCode(int statusCode) {
+        this.statusCode = statusCode;
     }
 
 }

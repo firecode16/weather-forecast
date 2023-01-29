@@ -10,4 +10,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface WeatherInformationRepository extends CrudRepository<ForecastWeather, Long> {
+
+    public ForecastWeather findFirstByOrderByRegisterDateDesc();
 }

@@ -23,6 +23,12 @@ public class WeatherForecastResponse {
         this.message = message;
     }
 
+    public WeatherForecastResponse(String result, String message, Object data) {
+        this.result = result;
+        this.message = message;
+        this.data = data;
+    }
+
     public String getResult() {
         return result;
     }
