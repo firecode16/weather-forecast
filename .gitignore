@@ -20,6 +20,7 @@ target/
 *.ipr
 
 ### NetBeans ###
+/nbactions.xml
 /nbproject/private/
 /nbbuild/
 /dist/
