@@ -1,6 +1,7 @@
 # weather-forecast
 
 Pre-requisitos
+
 •	Haber instalado y Ambientado Docker CE en su servidor Linux. Si a un no lo ha instalado seguir los siguientes pasos:
 https://docs.docker.com/engine/install/ubuntu/
 
