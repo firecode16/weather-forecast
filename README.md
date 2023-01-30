@@ -40,6 +40,13 @@ posteriormente Pegarlo en /docker-compose.yml, que se creo anteriormente en linu
   
   ![image](https://user-images.githubusercontent.com/69737708/215521178-b2cf5e05-0eec-4a3a-90c6-1ac3f7406b29.png)
 
+7.- Verificamos la traza del Microservicio y ver si el despliegue no causo Errores, con el siguiente comando:
+  - docker container logs weather-forecast
   
+  ![image](https://user-images.githubusercontent.com/69737708/215523041-8e348dbe-e561-4580-84a1-60f0b8a01179.png)
 
-  
+8.- Si todo esta correcto, deberia poder verse el sitio de Swagguer UI:
+
+![image](https://user-images.githubusercontent.com/69737708/215523842-bfbe06fd-9a59-4c9d-b3a7-bcf2886ecc2b.png)
+
+
