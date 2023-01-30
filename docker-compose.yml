@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+  # Database Service (Mysql)
+  host_mysql_db:
+    container_name: mysql_db
+    image: mysql:5.7
+    volumes:
+      - $PWD/mysql_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: admin123
+      MYSQL_DATABASE: DB_LOCAL
+      MYSQL_USER: server
+      MYSQL_PASSWORD: admin123
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    networks:
+      - backend_net
+
+  # app microservice weather-forecast-service
+  weather-forecast-service:
+    restart: always
+    container_name: weather-forecast
+    image: img-weather-forecast:1
+    build:
+      context: ./
+      dockerfile: $PWD/deployments/weather-forecast-service/Dockerfile
+    ports:
+      - 8082:8082
+    networks:
+      - backend_net
+    depends_on:
+      - host_mysql_db
+
+volumes:
+  mysql_data:
+
+# Networks to be created to facilitate communication between containers
+networks:
+  backend_net:
