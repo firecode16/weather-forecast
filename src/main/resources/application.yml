@@ -39,4 +39,4 @@ current:
 # Secret key auth - REST API authentication.
 secret:
    api:
-    key: aee912740b2ec1780ebbfd2e13cd0ed2
+    key: dd6dd1d8202a84d0fffd125f6815a88e

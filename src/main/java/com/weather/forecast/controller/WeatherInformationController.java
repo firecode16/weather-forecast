@@ -37,7 +37,8 @@ public class WeatherInformationController {
     @PostMapping(value = "/getCurrentWeatherForecast")
     public WeatherForecastResponse getCurrentWeatherForecastByCityName(@RequestBody final Map<String, Object> map) {
         WeatherForecastResponse weatherForecastResponse;
-        ForecastWeather forecastWeather = weatherInfoService.getCurrentWeatherForecastByCityName((String) map.get("cityName"));
+
+        final ForecastWeather forecastWeather = (!map.isEmpty()) ? weatherInfoService.getCurrentWeatherForecastByCityName((String) map.get("cityName")) : null;
 
         if (forecastWeather != null) {
             if (forecastWeather.getStatusCode() == 0) {
@@ -70,7 +71,7 @@ public class WeatherInformationController {
                 }
             }
         } else {
-            weatherForecastResponse = new WeatherForecastResponse(ERROR_RESPONSE, "The model ForecastWeather value, is: " + forecastWeather);
+            weatherForecastResponse = new WeatherForecastResponse(OK_RESPONSE, "The model ForecastWeather value, is: " + forecastWeather);
         }
         return weatherForecastResponse;
     }

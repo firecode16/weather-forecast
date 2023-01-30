@@ -125,7 +125,13 @@ public class WeatherInformationService {
     private ForecastWeather getTheLastConsultedWeatherForecast(int statusCode) {
         if (statusCode == 500 || statusCode == 502 || statusCode == 503 || statusCode == 504) {
             forecastWeather = weatherInfoRepository.findFirstByOrderByRegisterDateDesc();
-            forecastWeather.setStatusCode(statusCode);
+
+            if (forecastWeather == null) {
+                forecastWeather = new ForecastWeather();
+                forecastWeather.setStatusCode(statusCode);
+            } else {
+                forecastWeather.setStatusCode(statusCode);
+            }
         }
         return forecastWeather;
     }
