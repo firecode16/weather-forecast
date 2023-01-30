@@ -29,3 +29,17 @@ Guía para desplegar el Microservicio weather-forecast junto con la Base de Dato
 https://github.com/firecode16/weather-forecast/blob/master/docker-compose.yml
 
 posteriormente Pegarlo en /docker-compose.yml, que se creo anteriormente en linux.
+
+5.- Procedemos a Levantar la Base de datos con el Micro servicio, colocando el siguiente comando:
+  - docker-compose up -d
+  
+  ![image](https://user-images.githubusercontent.com/69737708/215520402-1f1e06dd-b2d6-4006-919b-7838e1b5a9be.png)
+
+6.- Verificamos las imagenes que acaban de levantarse, con el siguiente comando:
+  - docker ps
+  
+  ![image](https://user-images.githubusercontent.com/69737708/215521178-b2cf5e05-0eec-4a3a-90c6-1ac3f7406b29.png)
+
+  
+
+  
