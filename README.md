@@ -46,7 +46,17 @@ posteriormente Pegarlo en /docker-compose.yml, que se creo anteriormente en linu
   ![image](https://user-images.githubusercontent.com/69737708/215523041-8e348dbe-e561-4580-84a1-60f0b8a01179.png)
 
 8.- Si todo esta correcto, deberia poder verse el sitio de Swagguer UI:
+http://192.168.56.101:8082/api/swagger-ui.html
 
 ![image](https://user-images.githubusercontent.com/69737708/215523842-bfbe06fd-9a59-4c9d-b3a7-bcf2886ecc2b.png)
 
+9.- Creamos las tablas de Base de datos tomando el script del proyecto:
+https://github.com/firecode16/weather-forecast/blob/master/src/main/resources/schema.sql
 
+copiar el script, pergar en MySql Workbench y ejecutar el script, Listo. Una vez creado la tabla solo nos queda probar los servicios Api Restful.
+
+10.- Probando un Servicio Api Rest:
+
+![image](https://user-images.githubusercontent.com/69737708/215526627-92d5aa5f-9f57-4ca7-9064-ab3373feb913.png)
+
+11.- LISTO !.
