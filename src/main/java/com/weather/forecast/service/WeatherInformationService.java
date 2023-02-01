@@ -40,6 +40,7 @@ public class WeatherInformationService {
             JsonForecast jsonForecast = weatherInfoApiClient.getCurrentWeatherForecastByCityName(cityName);
             forecastWeather = saveForecastWeather(jsonForecast);
         } catch (FeignException ex) {
+            System.err.println("-- FALLO EL CONSUMO --> " + "status: " + ex.status() + ", CAUSE: " + ex.getLocalizedMessage());
             forecastWeather = getTheLastConsultedWeatherForecast(ex.status());
         }
         return forecastWeather;

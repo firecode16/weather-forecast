@@ -34,7 +34,7 @@ current:
       data:
         baseUrl: https://api.openweathermap.org/data/2.5
       filter:
-        name: /weather?
+        name: weather?
 
 # Secret key auth - REST API authentication.
 secret:
