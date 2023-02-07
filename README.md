@@ -59,4 +59,13 @@ copiar el script, pergar en MySql Workbench y ejecutar el script, Listo. Una vez
 
 ![image](https://user-images.githubusercontent.com/69737708/215526627-92d5aa5f-9f57-4ca7-9064-ab3373feb913.png)
 
+12.- Probando el 2do API la cual consulta el pronostico del tiempo por ciudades y envia la información a nuestra BD:
+
+![image](https://user-images.githubusercontent.com/69737708/217380410-01d6f044-d143-4f58-9c17-b9599efa89d7.png)
+
+![image](https://user-images.githubusercontent.com/69737708/217380523-fb788531-9525-42d0-9d69-4564b1f9968e.png)
+
+![image](https://user-images.githubusercontent.com/69737708/217380614-66f36653-d109-4b96-b907-5166e257e833.png)
+
+
 11.- LISTO !.
